@@ -1,0 +1,2 @@
+- name: reset connection to allow user changes to take affect for the current login user
+  meta: reset_connection

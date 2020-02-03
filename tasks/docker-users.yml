@@ -7,7 +7,7 @@
   with_items: "{{ docker_users }}"
   register: users_updated
 
-- block:
-  - name: reset connection to allow user changes to take affect for the current login user
-    meta: reset_connection
+#https://github.com/ansible/ansible/issues/41313
+- name: Force reset connection
+  include_tasks: reset_connection.yml
   when: users_updated.changed
