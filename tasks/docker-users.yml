@@ -7,6 +7,7 @@
   with_items: "{{ docker_users }}"
   register: users_updated
 
-- name: reset connection to allow user changes to take affect for the current login user
-  meta: reset_connection
+- block:
+  - name: reset connection to allow user changes to take affect for the current login user
+    meta: reset_connection
   when: users_updated.changed
